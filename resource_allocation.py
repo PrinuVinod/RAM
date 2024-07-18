@@ -2,7 +2,7 @@ import pandas as pd
 import requests
 
 # OpenWeatherMap API details
-API_KEY = 'bf2bdb4a714aed3a1a8e0d17644f9536'  # Replace with your OpenWeatherMap API key
+API_KEY = 'bf2bdb4a714aed3a1a8e0d17644f9536'
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 
 def get_rainfall(location):
@@ -39,11 +39,22 @@ def main():
     num_locations = len(flood_data)
     units_per_location = total_units_available / num_locations
     
-    # Initialize a dictionary to store allocated units and rainfall for each location
+    # Initialize a dictionary to store allocated units, elevation, and sea level status for each location
     allocated_units = {}
 
     # Iterate through each location in the dataset
-    for loc in flood_data['Location']:
+    for index, row in flood_data.iterrows():
+        loc = row['Location']
+        elevation = row['Elevation']
+        
+        # Determine sea level status
+        if elevation > 0:
+            sea_level_status = "Above Sea Level"
+        elif elevation < 0:
+            sea_level_status = "Below Sea Level"
+        else:
+            sea_level_status = "Sea Level"
+        
         # Get live rainfall data for the current location
         rain_mm = get_rainfall(loc)
         
@@ -53,14 +64,17 @@ def main():
         # Calculate units allocated for the current location based on units per location
         allocated_units[loc] = {
             'allocated_units': rain_mm * units_per_location,
-            'rainfall_mm': rain_mm
+            'rainfall_mm': rain_mm,
+            'elevation': elevation,
+            'sea_level_status': sea_level_status
         }
     
-    # Print the allocated units and rainfall for each location
+    # Print the allocated units, elevation, and sea level status for each location
     for loc, data in allocated_units.items():
         print(f"Location: {loc}")
         print(f"Units allocated: {data['allocated_units']:.2f}")
         print(f"Current rainfall: {data['rainfall_mm']} mm")
+        print(f"Elevation: {data['elevation']} meters {data['sea_level_status']}")
         print("-" * 20)
 
 if __name__ == "__main__":
