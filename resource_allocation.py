@@ -1,33 +1,9 @@
 import pandas as pd
 import requests
 
-# Load data
-flood_data = pd.read_csv('flood_data.csv')
-
 # OpenWeatherMap API details
 API_KEY = 'bf2bdb4a714aed3a1a8e0d17644f9536'  # Replace with your OpenWeatherMap API key
-BASE_URL = 'api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=bf2bdb4a714aed3a1a8e0d17644f9536'
-
-# Define resource allocation logic
-def allocate_resources(rain_mm, location):
-    # Filter flood data for the location
-    location_data = flood_data[flood_data['Location'] == location]
-    
-    # Determine the severity based on rain_mm (simple example, customize as needed)
-    if rain_mm > 200:
-        severity = 'Severe'
-    elif rain_mm > 100:
-        severity = 'Moderate'
-    else:
-        severity = 'Mild'
-    
-    # Calculate average impact for the severity
-    avg_impact = location_data[location_data['Severity'] == severity]['Impact'].mean()
-    
-    # Define total units needed
-    total_units = avg_impact  # This can be adjusted based on specific needs
-    
-    return total_units
+BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 
 def get_rainfall(location):
     params = {
@@ -41,7 +17,7 @@ def get_rainfall(location):
     try:
         data = response.json()
     except requests.exceptions.JSONDecodeError:
-        print("Error: Unable to fetch weather data. Please check your API key and internet connection.")
+        print(f"Error: Unable to fetch weather data for {location}. Please check your API key and internet connection.")
         return None
 
     if response.status_code == 200:
@@ -49,28 +25,43 @@ def get_rainfall(location):
         rain_mm = data.get('rain', {}).get('1h', 0)
         return rain_mm
     else:
-        print("Error fetching weather data:", data.get('message', 'Unknown error'))
+        print(f"Error fetching weather data for {location}:", data.get('message', 'Unknown error'))
         return None
 
 def main():
-    # User input for location
-    location = input("Enter the location (Alappuzha, Ambalappuzha, Haripad, Chengannur, Mavelikkara, Kayamkulam, Kuttanad, Cherthala, Arror): ")
+    # Load locations from CSV file
+    flood_data = pd.read_csv('flood_data.csv')
     
-    if location not in flood_data['Location'].unique():
-        print("Invalid location. Please enter one of the specified locations.")
-        return
+    # User input for total units available
+    total_units_available = int(input("Enter the number of units available (1 unit = resources for 1 person): "))
     
-    # Get live rainfall data
-    rain_mm = get_rainfall(location)
+    # Calculate units per location
+    num_locations = len(flood_data)
+    units_per_location = total_units_available / num_locations
     
-    if rain_mm is None:
-        return
+    # Initialize a dictionary to store allocated units and rainfall for each location
+    allocated_units = {}
+
+    # Iterate through each location in the dataset
+    for loc in flood_data['Location']:
+        # Get live rainfall data for the current location
+        rain_mm = get_rainfall(loc)
+        
+        if rain_mm is None:
+            continue
+        
+        # Calculate units allocated for the current location based on units per location
+        allocated_units[loc] = {
+            'allocated_units': rain_mm * units_per_location,
+            'rainfall_mm': rain_mm
+        }
     
-    # Allocate resources
-    total_units = allocate_resources(rain_mm, location)
-    
-    # Print the results
-    print(f"Total units allocated for {location} with {rain_mm} mm rain: {total_units}")
+    # Print the allocated units and rainfall for each location
+    for loc, data in allocated_units.items():
+        print(f"Location: {loc}")
+        print(f"Units allocated: {data['allocated_units']:.2f}")
+        print(f"Current rainfall: {data['rainfall_mm']} mm")
+        print("-" * 20)
 
 if __name__ == "__main__":
     main()
