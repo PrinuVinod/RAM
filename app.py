@@ -9,8 +9,7 @@ def index():
         if 'run_report' in request.form:
             return redirect(url_for('units_input'))
         elif 'run_live' in request.form:
-            subprocess.run(['python', 'live.py'])
-            return redirect(url_for('results'))
+            return redirect(url_for('live_input'))
     return render_template('index.html')
 
 @app.route('/units', methods=['GET', 'POST'])
@@ -21,7 +20,17 @@ def units_input():
             f.write(units)
         subprocess.run(['python', 'resource_allocation.py'])
         return redirect(url_for('results'))
-    return render_template('units_input.html')
+    return render_template('2012_input.html')
+
+@app.route('/live', methods=['GET', 'POST'])
+def live_input():
+    if request.method == 'POST':
+        units = request.form['units']
+        with open('total_units.txt', 'w') as f:
+            f.write(units)
+        subprocess.run(['python', 'live.py'])
+        return redirect(url_for('results'))
+    return render_template('live_input.html')
 
 @app.route('/results')
 def results():
