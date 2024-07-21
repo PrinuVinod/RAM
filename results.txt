@@ -1,6 +1,0 @@
-Location: Alappuzha
-Units allocated: 100.0
-Current rainfall: 51 mm
-Elevation: 1 meters (Above Sea Level)
-Severity: 50 mm
---------------------
