@@ -1,15 +1,14 @@
 import pandas as pd
 import requests
 
-# OpenWeatherMap API details
-API_KEY = '6fLiAoGmc95xh768Fl77KidyvfrmMDkl'
-BASE_URL = 'https://api.tomorrow.io/v4/weather/forecast?location=42.3478,-71.0466&apikey=6fLiAoGmc95xh768Fl77KidyvfrmMDkl'
+# WeatherAPI details
+API_KEY = 'c3af147d792747b796a100628242207'
+BASE_URL = 'http://api.weatherapi.com/v1/current.json'
 
 def get_rainfall(location):
     params = {
-        'q': location,
-        'appid': API_KEY,
-        'units': 'metric'
+        'key': API_KEY,
+        'q': location
     }
     response = requests.get(BASE_URL, params=params)
     
@@ -20,10 +19,10 @@ def get_rainfall(location):
         return None
 
     if response.status_code == 200:
-        rain_mm = data.get('rain', {}).get('1h', 0)
+        rain_mm = data.get('current', {}).get('precip_mm', 0)
         return rain_mm
     else:
-        print(f"Error fetching weather data for {location}: {data.get('message', 'Unknown error')}")
+        print(f"Error fetching weather data for {location}: {data.get('error', {}).get('message', 'Unknown error')}")
         return None
 
 def get_severity_based_on_elevation(elevation):

@@ -2,8 +2,8 @@ import pandas as pd
 import requests
 
 # OpenWeatherMap API details
-API_KEY = '6fLiAoGmc95xh768Fl77KidyvfrmMDkl'
-BASE_URL = 'https://api.tomorrow.io/v4/weather/forecast?location=42.3478,-71.0466&apikey=6fLiAoGmc95xh768Fl77KidyvfrmMDkl'
+API_KEY = 'bf2bdb4a714aed3a1a8e0d17644f9536'
+BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 
 def get_rainfall(location):
     params = {
