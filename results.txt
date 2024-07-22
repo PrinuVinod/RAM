@@ -1,0 +1,42 @@
+Location: Alappuzha
+Units allocated: 14.130979048623008
+Current rainfall: 268.1 mm
+Elevation: 1.0 meters (Above Sea Level)
+Severity: 50 mm
+--------------------
+Location: Cherthala
+Units allocated: 15.533008301488996
+Current rainfall: 294.7 mm
+Elevation: 2.0 meters (Above Sea Level)
+Severity: 100 mm
+--------------------
+Location: Ambalappuzha
+Units allocated: 13.340361048886546
+Current rainfall: 253.1 mm
+Elevation: 2.0 meters (Above Sea Level)
+Severity: 100 mm
+--------------------
+Location: Kuttanadu
+Units allocated: 15.142970088285676
+Current rainfall: 287.3 mm
+Elevation: -2.7 meters (Below Sea Level)
+Severity: 50 mm
+--------------------
+Location: Karthikappally
+Units allocated: 15.142970088285676
+Current rainfall: 287.3 mm
+Elevation: 4.0 meters (Above Sea Level)
+Severity: 100 mm
+--------------------
+Location: Chengannur
+Units allocated: 13.017525365660825
+Current rainfall: 246.975 mm
+Elevation: 7.0 meters (Above Sea Level)
+Severity: 150 mm
+--------------------
+Location: Mavelikkara
+Units allocated: 13.69218605876927
+Current rainfall: 259.775 mm
+Elevation: 15.0 meters (Above Sea Level)
+Severity: 200 mm
+--------------------

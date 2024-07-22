@@ -11,7 +11,6 @@ def get_severity_based_on_elevation(elevation):
         return 200
 
 def main():
-    # Read number of units from file
     try:
         with open('total_units.txt', 'r') as f:
             total_units_available = int(f.read().strip())
