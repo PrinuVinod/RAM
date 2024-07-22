@@ -18,7 +18,7 @@ def run_2012_update():
     save_units_to_file(units)
     result = run_script('resource_allocation.py', units)
     if result['status'] == 'success':
-        return jsonify({'status': 'success', 'redirect_url': url_for('result_page')})
+        return jsonify({'status': 'success', 'redirect_url': url_for('result')})
     else:
         return jsonify({'status': 'error', 'output': result['output']})
 
@@ -29,7 +29,7 @@ def run_live_update():
     save_units_to_file(units)
     result = run_script('live.py', units)
     if result['status'] == 'success':
-        return jsonify({'status': 'success', 'redirect_url': url_for('result_page')})
+        return jsonify({'status': 'success', 'redirect_url': url_for('result')})
     else:
         return jsonify({'status': 'error', 'output': result['output']})
 
@@ -55,19 +55,15 @@ def save_units_to_file(units):
 def result():
     file_path = 'results.txt'
     
-    # Read the contents of the file
     try:
         with open(file_path, 'r') as file:
             file_contents = file.read()
-        status = 'success'  # or 'error' depending on your logic
+        status = 'success'
     except Exception as e:
         file_contents = str(e)
         status = 'error'
     
     return render_template('result.html', status=status, result=file_contents)
-
-if __name__ == '__main__':
-    app.run(debug=True)
 
 if __name__ == '__main__':
     app.run(debug=True)
