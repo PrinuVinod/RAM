@@ -3,7 +3,7 @@ import requests
 
 # OpenWeatherMap API details
 API_KEY = 'bf2bdb4a714aed3a1a8e0d17644f9536'
-BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
+BASE_URL = 'http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=bf2bdb4a714aed3a1a8e0d17644f9536'
 
 def get_rainfall(location):
     params = {
