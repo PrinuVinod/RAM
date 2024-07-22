@@ -103,7 +103,6 @@ def main():
             f.write(f"Units allocated: {data['allocated_units'] if data['allocated_units'] is not None else 'No data available'}\n")
             f.write(f"Current rainfall: {data['rainfall_mm'] if data['rainfall_mm'] is not None else 'No data available'} mm\n")
             f.write(f"Elevation: {data['elevation']} meters ({data['sea_level_status']})\n")
-            f.write(f"Severity: {data['severity']} mm\n")
             f.write("-" * 20 + "\n")
 
 if __name__ == "__main__":
