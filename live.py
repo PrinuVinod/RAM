@@ -1,7 +1,7 @@
 import pandas as pd
 import requests
 
-# OpenWeatherMap API details
+# tomorrow.io API details
 API_KEY = '6fLiAoGmc95xh768Fl77KidyvfrmMDkl'
 BASE_URL = 'https://api.tomorrow.io/v4/weather/forecast?location=42.3478,-71.0466&apikey=6fLiAoGmc95xh768Fl77KidyvfrmMDkl'
 
@@ -75,9 +75,7 @@ def main():
             }
             continue
 
-        # Only allocate units if rainfall exceeds the severity for the given location
         if rain_mm > severity:
-            # Calculate the relative weight of the current location's rainfall
             total_rainfall = sum([get_rainfall(row['Location']) for _, row in flood_data.iterrows() if get_rainfall(row['Location']) > row['Severity']])
             weight = rain_mm / total_rainfall if total_rainfall > 0 else 0
 
