@@ -34,10 +34,10 @@
           <li><a href="#services">Services</a></li>
           <!-- <li><a href="#portfolio">Portfolio</a></li> -->
           <!-- <li><a href="#team">Team</a></li> -->
-          <li class="dropdown"><a href="#"><span>Locations</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li class="dropdown"><a href="{{ url_for('location') }}"><span>Locations</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <!-- <li><a href="#">Alappuzha</a></li> -->
-              <li class="dropdown"><a href="{{ url_for('location') }}"><span>Alappuzha</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li><a href="{{ url_for('location') }}">Alappuzha</a></li>
+              <!-- <li class="dropdown"><a href="{{ url_for('location') }}"><span>Alappuzha</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
                   <li><a href="{{ url_for('location') }}">Alappuzha</a></li>
                   <li><a href="{{ url_for('location') }}">Cherthala</a></li>
@@ -48,7 +48,7 @@
                   <li><a href="{{ url_for('location') }}">Mavelikkara</a></li>
                 </ul>
               </li>
-              <!-- <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 2</a></li>
               <li><a href="#">Dropdown 3</a></li>
               <li><a href="#">Dropdown 4</a></li> -->
             </ul>
@@ -796,9 +796,9 @@
           <div class="col-lg-3 col-md-3 footer-links">
             <h4>Pages</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> Services</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#hero"> Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#about"> About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#services"> Services</a></li>
               <!-- <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> Terms of service</a></li> -->
               
             </ul>
@@ -810,7 +810,7 @@
             <h4>Pages</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('location') }}">Location</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}">Contact</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="#contact">Contact</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('privacy') }}">Privacy Policy</a></li>
               <!-- <li><i class="bi bi-chevron-right"></i> <a href="#"> Web Design</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#"> Web Development</a></li>
