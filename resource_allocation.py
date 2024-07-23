@@ -20,6 +20,10 @@ def main():
     flood_data = pd.read_csv('flood_data.csv')
     flood_data['Severity'] = flood_data['Elevation'].apply(get_severity_based_on_elevation)
     weather_data = pd.read_csv('weather_data(2012).csv')
+    
+    # Print the columns of weather_data to verify the column names
+    print("Weather data columns:", weather_data.columns)
+    
     allocated_units = {}
     total_allocated_units = 0
 
@@ -27,6 +31,7 @@ def main():
         loc = row['Location']
         elevation = row['Elevation']
         severity = row['Severity']
+        population = row['Population']  # Assume 'Population' column exists in flood_data.csv
 
         if elevation > 0:
             sea_level_status = "Above Sea Level"
@@ -40,14 +45,16 @@ def main():
 
             if rain_mm > severity:
                 total_rainfall = weather_data[weather_data['rainfall'] > severity]['rainfall'].sum()
-                weight = rain_mm / total_rainfall
+                weight_rainfall = rain_mm / total_rainfall
+                weight_population = population / flood_data['Population'].sum()
 
                 allocated_units[loc] = {
-                    'allocated_units': total_units_available * weight,
+                    'allocated_units': total_units_available * (weight_rainfall + weight_population) / 2,
                     'rainfall_mm': rain_mm,
                     'elevation': elevation,
                     'sea_level_status': sea_level_status,
-                    'severity': severity
+                    'severity': severity,
+                    'population': population
                 }
                 total_allocated_units += allocated_units[loc]['allocated_units']
             else:
@@ -56,7 +63,8 @@ def main():
                     'rainfall_mm': rain_mm,
                     'elevation': elevation,
                     'sea_level_status': sea_level_status,
-                    'severity': severity
+                    'severity': severity,
+                    'population': population
                 }
         else:
             allocated_units[loc] = {
@@ -64,7 +72,8 @@ def main():
                 'rainfall_mm': None,
                 'elevation': elevation,
                 'sea_level_status': sea_level_status,
-                'severity': severity
+                'severity': severity,
+                'population': population
             }
 
     # Write results to a file
@@ -74,7 +83,6 @@ def main():
             f.write(f"Units allocated: {data['allocated_units'] if data['allocated_units'] is not None else 'No data available'}\n")
             f.write(f"Current rainfall: {data['rainfall_mm'] if data['rainfall_mm'] is not None else 'No data available'} mm\n")
             f.write(f"Elevation: {data['elevation']} meters ({data['sea_level_status']})\n")
-            f.write(f"Severity: {data['severity']} mm\n")
             f.write("-" * 20 + "\n")
 
     # Write unallocated units to a file
