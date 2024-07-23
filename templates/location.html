@@ -109,6 +109,7 @@
                                 class="form-control" required>
                         </div>
                         <button type="button" id="run_2012_update" class="btn btn-primary">Run 2012 Update</button>
+                        <button type="button" id="run_2019_update" class="btn btn-primary">Run 2019 Update</button>
                         <button type="button" id="run_live_update" class="btn btn-primary">Run Live Update</button>
                     </form>
                     <div id="result" class="mt-3"></div>
@@ -199,6 +200,27 @@
                     },
                     error: function () {
                         $('#result').html('<p>Error executing 2012 update script.</p>');
+                    }
+                });
+            });
+
+            $('#run_2019_update').click(function () {
+                const units = $('#units').val();
+                $.ajax({
+                    url: '/run_2019_update',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ units: units }),
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            // Redirect to the result page after script execution
+                            window.location.href = response.redirect_url;
+                        } else {
+                            $('#result').html('<p>Error executing 2019 update script: ' + response.output + '</p>');
+                        }
+                    },
+                    error: function () {
+                        $('#result').html('<p>Error executing 2019 update script.</p>');
                     }
                 });
             });
