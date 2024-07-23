@@ -22,6 +22,17 @@ def run_2012_update():
     else:
         return jsonify({'status': 'error', 'output': result['output']})
     
+@app.route('/run_2018_update', methods=['POST'])
+def run_2018_update():
+    data = request.json
+    units = data.get('units')
+    save_units_to_file(units)
+    result = run_script('resource_allocation2.py', units)
+    if result['status'] == 'success':
+        return jsonify({'status': 'success', 'redirect_url': url_for('result')})
+    else:
+        return jsonify({'status': 'error', 'output': result['output']})
+    
 @app.route('/run_2019_update', methods=['POST'])
 def run_2019_update():
     data = request.json
