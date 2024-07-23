@@ -63,7 +63,8 @@ def result():
                 'location': lines[0].split(': ')[1],
                 'units_allocated': lines[1].split(': ')[1],
                 'current_rainfall': lines[2].split(': ')[1],
-                'elevation': lines[3].split(': ')[1]
+                'elevation': lines[3].split(': ')[1],
+                'population': lines[4].split(': ')[1],
             })
     
     # Read the total units file
