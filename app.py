@@ -53,41 +53,31 @@ def save_units_to_file(units):
 
 @app.route('/result')
 def result():
-    try:
-        # Read the file
-        with open('results.txt', 'r') as file:
-            content = file.read()
-        
-        # Split the content by the delimiter
-        entries = content.split('--------------------')
-
-        results = []
-        for entry in entries:
-            lines = [line.strip() for line in entry.split('\n') if line.strip()]
-            if len(lines) < 4:
-                # Skip incomplete or malformed entries
-                continue
-
-            # Extract the details
-            location = lines[0].split(': ')[1].strip()
-            units_allocated = lines[1].split(': ')[1].strip()
-            current_rainfall = lines[2].split(': ')[1].strip()
-            elevation = lines[3].split(': ')[1].strip()
-
-            results.append({
-                'location': location,
-                'units_allocated': units_allocated,
-                'current_rainfall': current_rainfall,
-                'elevation': elevation
+    # Read the result file
+    with open('results.txt', 'r') as file:
+        result_data = file.read().strip().split('\n--------------------\n')
+        result_entries = []
+        for entry in result_data:
+            lines = entry.split('\n')
+            result_entries.append({
+                'location': lines[0].split(': ')[1],
+                'units_allocated': lines[1].split(': ')[1],
+                'current_rainfall': lines[2].split(': ')[1],
+                'elevation': lines[3].split(': ')[1]
             })
-        
-        if results:
-            return render_template('result.html', status='success', result=results)
-        else:
-            return render_template('result.html', status='failure', result='No valid data found.')
-
-    except Exception as e:
-        return render_template('result.html', status='failure', result=f'An error occurred: {str(e)}')
+    
+    # Read the total units file
+    with open('total_units.txt', 'r') as file:
+        total_units = file.read().strip()
+    
+    # Read the units left file
+    with open('units_left.txt', 'r') as file:
+        units_left = file.read().strip()
+    
+    # Check the status
+    status = 'success' if result_entries else 'failed'
+    
+    return render_template('result.html', result=result_entries, total_units=total_units, units_left=units_left, status=status)
 
 @app.route('/privacy')
 def privacy():

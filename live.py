@@ -48,6 +48,7 @@ def main():
     flood_data['Severity'] = flood_data['Elevation'].apply(get_severity_based_on_elevation)
 
     allocated_units = {}
+    total_allocated_units = 0
 
     for index, row in flood_data.iterrows():
         loc = row['Location']
@@ -87,6 +88,7 @@ def main():
                 'sea_level_status': sea_level_status,
                 'severity': severity
             }
+            total_allocated_units += allocated_units[loc]['allocated_units']
         else:
             allocated_units[loc] = {
                 'allocated_units': 0,
@@ -104,6 +106,11 @@ def main():
             f.write(f"Current rainfall: {data['rainfall_mm'] if data['rainfall_mm'] is not None else 'No data available'} mm\n")
             f.write(f"Elevation: {data['elevation']} meters ({data['sea_level_status']})\n")
             f.write("-" * 20 + "\n")
+
+    # Write unallocated units to a file
+    units_left = total_units_available - total_allocated_units
+    with open('units_left.txt', 'w') as f:
+        f.write(f"{units_left}")
 
 if __name__ == "__main__":
     main()
