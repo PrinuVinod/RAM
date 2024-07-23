@@ -65,5 +65,9 @@ def result():
     
     return render_template('result.html', status=status, result=file_contents)
 
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

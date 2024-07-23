@@ -25,7 +25,6 @@
 
       <a href="{{ url_for('index') }}" class="logo d-flex align-items-center me-auto me-lg-0">
         <h1 class="sitename">RAM</h1>
-        <span>.</span>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -55,12 +54,16 @@
             </ul>
           </li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="{{ url_for('privacy') }}"><i class="fas fa-user-shield"></i></a></li>
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
       <!-- <a class="btn-getstarted" href="#about">Get Started</a> -->
     </div>
   </header>
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <main class="main">
     <!-- Hero Section -->
@@ -793,10 +796,10 @@
           <div class="col-lg-3 col-md-3 footer-links">
             <h4>Pages</h4>
             <ul>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Home</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> About us</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#"> Services</a></li>
-              <!-- <li><i class="bi bi-chevron-right"></i> <a href="#"> Terms of service</a></li> -->
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> Home</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> About us</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> Services</a></li>
+              <!-- <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> Terms of service</a></li> -->
               
             </ul>
             <ul>
@@ -807,8 +810,8 @@
             <h4>Pages</h4>
             <ul>
               <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('location') }}">Location</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Contact</a></li>
-              <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}">Contact</a></li>
+              <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('privacy') }}">Privacy Policy</a></li>
               <!-- <li><i class="bi bi-chevron-right"></i> <a href="#"> Web Design</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#"> Web Development</a></li>
               <li><i class="bi bi-chevron-right"></i> <a href="#"> Product Management</a></li>

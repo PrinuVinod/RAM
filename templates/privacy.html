@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Privacy Policy | RAM</title>
+    <meta content="RAM" name="description">
+    <meta content="RAM" name="keywords">
+    <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+    <link href="{{ url_for('static', filename='img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+</head>
+
+<body class="index-page">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+            <a href="{{ url_for('index') }}" class="logo d-flex align-items-center me-auto me-lg-0">
+                <h1 class="sitename">RAM</h1>
+                <span>.</span>
+            </a>
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="{{ url_for('index') }}" class="active">Home<br></a></li>
+                    <li><a href="{{ url_for('index') }}">About</a></li>
+                    <li><a href="{{ url_for('index') }}">Services</a></li>
+                    <li class="dropdown"><a href="#"><span>Locations</span> <i
+                                class="bi bi-chevron-down toggle-dropdown"></i></a>
+                        <ul>
+                            <li class="dropdown"><a href="{{ url_for('location') }}"><span>Alappuzha</span><i
+                                        class="bi bi-chevron-down toggle-dropdown"></i></a>
+                                <ul>
+                                    <li><a href="{{ url_for('location') }}">Alappuzha</a></li>
+                                    <li><a href="{{ url_for('location') }}">Cherthala</a></li>
+                                    <li><a href="{{ url_for('location') }}">Ambalappuzha</a></li>
+                                    <li><a href="{{ url_for('location') }}">Kuttanadu</a></li>
+                                    <li><a href="{{ url_for('location') }}">Karthikappally</a></li>
+                                    <li><a href="{{ url_for('location') }}">Chengannur</a></li>
+                                    <li><a href="{{ url_for('location') }}">Mavelikkara</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ url_for('index') }}">Contact</a></li>
+                    <li><a href="{{ url_for('privacy') }}"><i class="fas fa-user-shield"></i></a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+        <img src="{{ url_for('static', filename='img/hero-bg.jpg') }}" alt="" data-aos="fade-in">
+        <div class="container">
+            <div class="row justify-content-center text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-xl-6 col-lg-8">
+                    <h2>Privacy Policy</h2>
+                    <!-- <p>Read our Privacy Policy</p> -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /Hero Section -->
+
+    <!-- Privacy Policy Section -->
+    <section id="privacy-policy" class="privacy-policy section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-10">
+                    <h2>Privacy Policy</h2>
+                    <p>Effective date: July 23, 2024</p>
+    
+                    <div class="accordion" id="privacyPolicyAccordion">
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingIntro">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseIntro" aria-expanded="false" aria-controls="collapseIntro">
+                                    Introduction
+                                </button>
+                            </h3>
+                            <div id="collapseIntro" class="accordion-collapse collapse" aria-labelledby="headingIntro"
+                                data-bs-parent="#privacyPolicyAccordion">
+                                <div class="accordion-body">
+                                    Welcome to RAM (Resource Allocation Manager). We value your privacy and are committed to
+                                    protecting your personal information. This Privacy Policy outlines our practices
+                                    regarding the collection, use, and disclosure of your information when you use our
+                                    website and services.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingInfo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseInfo" aria-expanded="false" aria-controls="collapseInfo">
+                                    Information We Collect
+                                </button>
+                            </h3>
+                            <div id="collapseInfo" class="accordion-collapse collapse" aria-labelledby="headingInfo"
+                                data-bs-parent="#privacyPolicyAccordion">
+                                <div class="accordion-body">
+                                    <p>We collect the following types of information:</p>
+                                    <ul>
+                                        <li><strong>Personal Information:</strong> When you contact us or register on our
+                                            site, we may collect personal information such as your name, email address, and
+                                            phone number.</li>
+                                        <li><strong>Usage Data:</strong> We collect information on how you access and use
+                                            our website, including your IP address, browser type, and pages visited.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingUse">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseUse" aria-expanded="false" aria-controls="collapseUse">
+                                    How We Use Your Information
+                                </button>
+                            </h3>
+                            <div id="collapseUse" class="accordion-collapse collapse" aria-labelledby="headingUse"
+                                data-bs-parent="#privacyPolicyAccordion">
+                                <div class="accordion-body">
+                                    <p>We use your information to:</p>
+                                    <ul>
+                                        <li>Provide and maintain our services</li>
+                                        <li>Notify you about changes to our services</li>
+                                        <li>Respond to your inquiries and support requests</li>
+                                        <li>Improve our website and services</li>
+                                        <li>Monitor the usage of our website</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingShare">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseShare" aria-expanded="false" aria-controls="collapseShare">
+                                    Sharing Your Information
+                                </button>
+                            </h3>
+                            <div id="collapseShare" class="accordion-collapse collapse" aria-labelledby="headingShare"
+                                data-bs-parent="#privacyPolicyAccordion">
+                                <div class="accordion-body">
+                                    <p>We do not sell or rent your personal information to third parties. We may share your
+                                        information with:</p>
+                                    <ul>
+                                        <li>Service providers who assist us in operating our website and providing our
+                                            services</li>
+                                        <li>Law enforcement agencies, if required by law</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingSecurity">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSecurity" aria-expanded="false"
+                                    aria-controls="collapseSecurity">
+                                    Security
+                                </button>
+                            </h3>
+                            <div id="collapseSecurity" class="accordion-collapse collapse" aria-labelledby="headingSecurity"
+                                data-bs-parent="#privacyPolicyAccordion">
+                                <div class="accordion-body">
+                                    We take reasonable measures to protect your information from unauthorized access,
+                                    alteration, or destruction. However, no method of transmission over the internet or
+                                    electronic storage is 100% secure, so we cannot guarantee absolute security.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingLinks">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseLinks" aria-expanded="false" aria-controls="collapseLinks">
+                                    Links to Other Websites
+                                </button>
+                            </h3>
+                            <div id="collapseLinks" class="accordion-collapse collapse" aria-labelledby="headingLinks"
+                                data-bs-parent="#privacyPolicyAccordion">
+                                <div class="accordion-body">
+                                    Our website may contain links to other websites that are not operated by us. We have no
+                                    control over the content and practices of these websites and are not responsible for
+                                    their privacy policies.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingChanges">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseChanges" aria-expanded="false" aria-controls="collapseChanges">
+                                    Changes to This Privacy Policy
+                                </button>
+                            </h3>
+                            <div id="collapseChanges" class="accordion-collapse collapse" aria-labelledby="headingChanges"
+                                data-bs-parent="#privacyPolicyAccordion">
+                                <div class="accordion-body">
+                                    We may update our Privacy Policy from time to time. We will notify you of any changes by
+                                    posting the new Privacy Policy on this page. You are advised to review this Privacy
+                                    Policy periodically for any changes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h3 class="accordion-header" id="headingContact">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseContact" aria-expanded="false" aria-controls="collapseContact">
+                                    Contact Us
+                                </button>
+                            </h3>
+                            <div id="collapseContact" class="accordion-collapse collapse" aria-labelledby="headingContact"
+                                data-bs-parent="#privacyPolicyAccordion">
+                                <div class="accordion-body">
+                                    <p>If you have any questions about this Privacy Policy, please contact us:</p>
+                                    <ul>
+                                        <li>By email: <a href="mailto:ramdisaster@gmail.com">ramdisaster@gmail.com</a></li>
+                                        <li>By phone: +91 7338267153</li>
+                                        <li>By mail: Amal Jyothi College of Engineering - Erumely Road, Koovappally, Kerala
+                                            686518</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- /Privacy Policy Section -->
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <footer id="footer" class="footer dark-background">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-6 col-md-6 footer-about">
+                        <a href="{{ url_for('index') }}" class="logo d-flex align-items-center">
+                            <span class="sitename">RAM - Resource Allocation Manager</span>
+                        </a>
+                        <div class="footer-contact pt-3">
+                            <p>Amal Jyothi College of Engineering - Erumely Road, Koovappally</p>
+                            <p>Kerala 686518</p>
+                            <p class="mt-3"><strong>Phone:</strong> <span>+91 7338267153</span></p>
+                            <p><strong>Email:</strong> <span>ramdisaster@gmail.com</span></p>
+                        </div>
+                        <div class="social-links d-flex mt-4">
+                            <a href="#"><i class="bi bi-twitter-x"></i></a>
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 footer-links">
+                        <h4>Pages</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> Home</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> About us</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}"> Services</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 footer-links">
+                        <h4>Pages</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('location') }}">Location</a>
+                            </li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('index') }}">Contact</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="{{ url_for('privacy') }}">Privacy
+                                    Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container text-center">
+                <p>© <span>Copyright</span> <strong class="px-1 sitename">RAM</strong> <span>All Rights Reserved</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
