@@ -53,17 +53,41 @@ def save_units_to_file(units):
 
 @app.route('/result')
 def result():
-    file_path = 'results.txt'
-    
     try:
-        with open(file_path, 'r') as file:
-            file_contents = file.read()
-        status = 'success'
+        # Read the file
+        with open('results.txt', 'r') as file:
+            content = file.read()
+        
+        # Split the content by the delimiter
+        entries = content.split('--------------------')
+
+        results = []
+        for entry in entries:
+            lines = [line.strip() for line in entry.split('\n') if line.strip()]
+            if len(lines) < 4:
+                # Skip incomplete or malformed entries
+                continue
+
+            # Extract the details
+            location = lines[0].split(': ')[1].strip()
+            units_allocated = lines[1].split(': ')[1].strip()
+            current_rainfall = lines[2].split(': ')[1].strip()
+            elevation = lines[3].split(': ')[1].strip()
+
+            results.append({
+                'location': location,
+                'units_allocated': units_allocated,
+                'current_rainfall': current_rainfall,
+                'elevation': elevation
+            })
+        
+        if results:
+            return render_template('result.html', status='success', result=results)
+        else:
+            return render_template('result.html', status='failure', result='No valid data found.')
+
     except Exception as e:
-        file_contents = str(e)
-        status = 'error'
-    
-    return render_template('result.html', status=status, result=file_contents)
+        return render_template('result.html', status='failure', result=f'An error occurred: {str(e)}')
 
 @app.route('/privacy')
 def privacy():
