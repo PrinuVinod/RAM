@@ -1,7 +1,7 @@
-Location,Elevation,Severity
-Cherthala,2,70
-Ambalappuzha,2,70
-Kuttanadu,-2.7,3
-Karthikappally,4,100
-Chengannur,7,200
-Mavelikkara,15,300
+Location,Elevation,Severity,Population
+Cherthala,2,70,"542,657"
+Ambalappuzha,2,70,"454,864"
+Kuttanadu,-2.7,3,"193,007"
+Karthikappally,4,100,"406,524"
+Chengannur,7,200,"197,419"
+Mavelikkara,15,300,"333,318"
