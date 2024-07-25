@@ -75,7 +75,6 @@ def save_units_to_file(units):
 
 @app.route('/result')
 def result():
-    # Read the result file
     with open('results.txt', 'r') as file:
         result_data = file.read().strip().split('\n--------------------\n')
         result_entries = []
@@ -89,15 +88,12 @@ def result():
                 'population': lines[4].split(': ')[1],
             })
     
-    # Read the total units file
     with open('total_units.txt', 'r') as file:
         total_units = file.read().strip()
     
-    # Read the units left file
     with open('units_left.txt', 'r') as file:
         units_left = file.read().strip()
     
-    # Check the status
     status = 'success' if result_entries else 'failed'
     
     return render_template('result.html', result=result_entries, total_units=total_units, units_left=units_left, status=status)

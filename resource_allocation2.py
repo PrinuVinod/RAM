@@ -21,7 +21,6 @@ def main():
     flood_data['Severity'] = flood_data['Elevation'].apply(get_severity_based_on_elevation)
     weather_data = pd.read_csv('weather_data(2018).csv')
     
-    # Print the columns of weather_data to verify the column names
     print("Weather data columns:", weather_data.columns)
     
     allocated_units = {}
@@ -31,7 +30,7 @@ def main():
         loc = row['Location']
         elevation = row['Elevation']
         severity = row['Severity']
-        population = row['Population']  # Assume 'Population' column exists in flood_data.csv
+        population = row['Population']
 
         if elevation > 0:
             sea_level_status = "Above Sea Level"
@@ -78,7 +77,6 @@ def main():
                 'population': population
             }
 
-    # Write results to a file
     with open('results.txt', 'w') as f:
         for loc, data in allocated_units.items():
             f.write(f"Location: {loc}\n")
@@ -88,7 +86,6 @@ def main():
             f.write(f"Population: {data['population']}\n")
             f.write("-" * 20 + "\n")
 
-    # Write unallocated units to a file
     units_left = total_units_available - total_allocated_units
     with open('units_left.txt', 'w') as f:
         f.write(f"{int(units_left)}")

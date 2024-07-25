@@ -37,7 +37,6 @@ def get_severity_based_on_elevation(elevation):
         return 200
 
 def main():
-    # Read number of units from file
     try:
         with open('total_units.txt', 'r') as f:
             total_units_available = int(f.read().strip())
@@ -46,7 +45,6 @@ def main():
 
     flood_data = pd.read_csv('flood_data.csv')
     
-    # Ensure Population column is treated as string before replacing commas
     flood_data['Population'] = flood_data['Population'].astype(str).str.replace(',', '').astype(int)
     flood_data['Severity'] = flood_data['Elevation'].apply(get_severity_based_on_elevation)
 
@@ -66,7 +64,6 @@ def main():
         else:
             sea_level_status = "Sea Level"
 
-        # Get live rainfall data
         rain_mm = get_rainfall(loc)
         
         if rain_mm is None:
@@ -108,7 +105,6 @@ def main():
                 'population': population
             }
 
-    # Write results to a file
     with open('results.txt', 'w') as f:
         for loc, data in allocated_units.items():
             f.write(f"Location: {loc}\n")
@@ -118,7 +114,6 @@ def main():
             f.write(f"Population: {data['population']}\n")
             f.write("-" * 20 + "\n")
 
-    # Write unallocated units to a file
     units_left = total_units_available - total_allocated_units
     with open('units_left.txt', 'w') as f:
         f.write(f"{units_left}")
