@@ -48,15 +48,18 @@ def main():
                 weight_rainfall = rain_mm / total_rainfall
                 weight_population = population / flood_data['Population'].sum()
 
+                units_allocated = total_units_available * (weight_rainfall + weight_population) / 2
+                units_allocated = round(units_allocated)
+
                 allocated_units[loc] = {
-                    'allocated_units': total_units_available * (weight_rainfall + weight_population) / 2,
+                    'allocated_units': units_allocated,
                     'rainfall_mm': rain_mm,
                     'elevation': elevation,
                     'sea_level_status': sea_level_status,
                     'severity': severity,
                     'population': population
                 }
-                total_allocated_units += allocated_units[loc]['allocated_units']
+                total_allocated_units += units_allocated
             else:
                 allocated_units[loc] = {
                     'allocated_units': 0,
@@ -89,7 +92,7 @@ def main():
     # Write unallocated units to a file
     units_left = total_units_available - total_allocated_units
     with open('units_left.txt', 'w') as f:
-        f.write(f"{units_left}")
+        f.write(f"{int(units_left)}")
 
 if __name__ == "__main__":
     main()
