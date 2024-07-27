@@ -1,5 +1,4 @@
 requests
 flask
 pandas
-os
-subprocess
+python-dotenv
