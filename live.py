@@ -1,14 +1,19 @@
 import pandas as pd
 import requests
+import os
+from dotenv import load_dotenv
 
-# tomorrow.io API details
-API_KEY = '6fLiAoGmc95xh768Fl77KidyvfrmMDkl'
-BASE_URL = 'https://api.tomorrow.io/v4/weather/forecast?location=42.3478,-71.0466&apikey=6fLiAoGmc95xh768Fl77KidyvfrmMDkl'
+# Load environment variables from .env file
+load_dotenv()
+
+# Get API details from environment variables
+API_KEY = os.getenv('API_KEY1')
+BASE_URL = os.getenv('BASE_URL1')
 
 def get_rainfall(location):
     params = {
         'q': location,
-        'appid': API_KEY,
+        'apikey': API_KEY,
         'units': 'metric'
     }
     response = requests.get(BASE_URL, params=params)
@@ -44,7 +49,6 @@ def main():
         total_units_available = 0
 
     flood_data = pd.read_csv('flood_data.csv')
-    
     flood_data['Population'] = flood_data['Population'].astype(str).str.replace(',', '').astype(int)
     flood_data['Severity'] = flood_data['Elevation'].apply(get_severity_based_on_elevation)
 
